@@ -616,9 +616,9 @@ public class MainWindow extends JFrame {
 			aimRowArray, firstRowArray, secondRowArray, thirdRowArray, fourthRowArray, fifthRowArray
 		};
 		
-		for (double[] is : matrix) {
-			for (double is2 : is) {
-				System.out.print(is2 + ", ");
+		for (double[] row : matrix) {
+			for (double element : row) {
+				System.out.print(element + ", ");
 			}
 			System.out.println();
 		}
