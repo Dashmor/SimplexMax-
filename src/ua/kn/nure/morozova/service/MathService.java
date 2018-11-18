@@ -7,7 +7,7 @@ public class MathService {
 
 	public String calculateResult(double[][] matrix) {
 
-		Set<Integer> indexes = new HashSet<>();
+		Set<Integer> rowIndexes = new HashSet<>();
 
 		double[][] converteMatrix = matrix;
 
@@ -30,11 +30,14 @@ public class MathService {
 
 //			checkMatrix(converteMatrix);
 
-			indexes.add(columnIndex);
+			rowIndexes.add(rowIndex);
 
 			counter++;
 		} while (allElementsNotOverZero(converteMatrix[0]) && counter < 5);
 
+		for (Integer indx : rowIndexes) {
+			System.out.println(matrix[indx][matrix[indx].length-1]);
+		}
 		return "";
 	}
 
