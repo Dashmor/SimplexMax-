@@ -604,12 +604,12 @@ public class MainWindow extends JFrame {
 		double[][] matrix = new double[][] { aimRowArray, firstRowArray, secondRowArray, thirdRowArray, fourthRowArray,
 				fifthRowArray };
 
-		for (double[] row : matrix) {
-			for (double element : row) {
-				System.out.print(element + ", ");
-			}
-			System.out.println();
-		}
+//		for (double[] row : matrix) {
+//			for (double element : row) {
+//				System.out.print(element + ", ");
+//			}
+//			System.out.println();
+//		}
 		MathService service = new MathService();
 		return service.calculateResult(matrix);
 	}
