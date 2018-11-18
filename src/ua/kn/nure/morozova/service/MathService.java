@@ -1,13 +1,13 @@
 package ua.kn.nure.morozova.service;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MathService {
 
 	public String calculateResult(double[][] matrix) {
 
-		Set<Integer> rowIndexes = new HashSet<>();
+		Map<Integer, Integer> indexes = new HashMap<>();
 
 		double[][] converteMatrix = matrix;
 
@@ -30,13 +30,15 @@ public class MathService {
 
 //			checkMatrix(converteMatrix);
 
-			rowIndexes.add(rowIndex);
+			indexes.put(columnIndex, rowIndex);
 
 			counter++;
 		} while (allElementsNotOverZero(converteMatrix[0]) && counter < 5);
 
-		for (Integer indx : rowIndexes) {
-			System.out.println(matrix[indx][matrix[indx].length-1]);
+		for (int i = 0; i < 5; i++) {
+			if( indexes.get(i)!=null ) {
+				System.out.println("x*i = " + i + " and has value " + matrix[indexes.get(i)][matrix[indexes.get(i)].length-1]);
+			}
 		}
 		return "";
 	}
@@ -124,6 +126,7 @@ public class MathService {
 	}
 
 	private double[] convertRowToNegative(double[] row) {
+		
 		for (int i = 0; i < row.length; i++) {
 			if (row[i] != 0.0) {
 				row[i] = -1 * row[i];
