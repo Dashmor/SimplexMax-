@@ -14,7 +14,6 @@ import java.util.Map.Entry;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
-
 import ua.kn.nure.morozova.service.MathService;
 
 import javax.swing.JComboBox;
@@ -164,7 +163,7 @@ public class MainWindow extends JFrame {
 				for (JTextField key : inputFourthRowValues.keySet()) {
 					key.setText(inputFourthRowValues.get(key));
 				}
-				
+
 				Map<JTextField, String> inputFifthRowValues = readFifthRowValues();
 				for (JTextField key : inputFifthRowValues.keySet()) {
 					key.setText(inputFifthRowValues.get(key));
@@ -510,64 +509,64 @@ public class MainWindow extends JFrame {
 		textField_28.setBounds(780, 388, 80, 26);
 		getContentPane().add(textField_28);
 		getContentPane().add(textField_28);
-		
+
 		textField_29 = new JTextField();
 		textField_29.setColumns(10);
 		textField_29.setBounds(157, 450, 55, 26);
 		getContentPane().add(textField_29);
-		
+
 		textField_30 = new JTextField();
 		textField_30.setColumns(10);
 		textField_30.setBounds(266, 450, 55, 26);
 		getContentPane().add(textField_30);
-		
+
 		textField_31 = new JTextField();
 		textField_31.setColumns(10);
 		textField_31.setBounds(379, 450, 55, 26);
 		getContentPane().add(textField_31);
-		
+
 		textField_32 = new JTextField();
 		textField_32.setColumns(10);
 		textField_32.setBounds(498, 450, 55, 26);
 		getContentPane().add(textField_32);
-		
+
 		textField_33 = new JTextField();
 		textField_33.setColumns(10);
 		textField_33.setBounds(608, 450, 55, 26);
 		getContentPane().add(textField_33);
-		
+
 		textField_34 = new JTextField();
 		textField_34.setColumns(10);
 		textField_34.setBounds(780, 450, 80, 26);
 		getContentPane().add(textField_34);
-		
+
 		comboBox_4 = new JComboBox();
-		comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"<=", ">=", "="}));
+		comboBox_4.setModel(new DefaultComboBoxModel(new String[] { "<=", ">=", "=" }));
 		comboBox_4.setToolTipText("");
 		comboBox_4.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
 		comboBox_4.setBounds(705, 450, 60, 26);
 		getContentPane().add(comboBox_4);
-		
+
 		JLabel label_24 = new JLabel("x1 +");
 		label_24.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		label_24.setBounds(215, 453, 60, 20);
 		getContentPane().add(label_24);
-		
+
 		JLabel label_25 = new JLabel("x2 +");
 		label_25.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		label_25.setBounds(326, 453, 43, 20);
 		getContentPane().add(label_25);
-		
+
 		JLabel label_26 = new JLabel("x3 +");
 		label_26.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		label_26.setBounds(440, 453, 43, 20);
 		getContentPane().add(label_26);
-		
+
 		JLabel label_27 = new JLabel("x4 +");
 		label_27.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		label_27.setBounds(556, 453, 51, 20);
 		getContentPane().add(label_27);
-		
+
 		JLabel label_28 = new JLabel("x5");
 		label_28.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		label_28.setBounds(666, 453, 24, 20);
@@ -578,32 +577,22 @@ public class MainWindow extends JFrame {
 
 	private String getResultAsText(Map<JTextField, String> inputAimValues, Map<JTextField, String> inputFirstRowValues,
 			Map<JTextField, String> inputSecondRowValues, Map<JTextField, String> inputThirdRowValues,
-			Map<JTextField, String> inputFourthRowValues, Map<JTextField, String> inputFifthRowValues, 
+			Map<JTextField, String> inputFourthRowValues, Map<JTextField, String> inputFifthRowValues,
 			Map<JComboBox, Object> inputComboBoxes) {
 
-		List<Double> aimRow = getListFromMap(inputAimValues);
-		
+		List<Double> aimRow = getListFromMap(inputAimValues, 0, 0.0);
+
 		for (JComboBox key : inputComboBoxes.keySet()) {
-			String value = (String)inputComboBoxes.get(key);
-			
-			if(!value.equals("=")) {
-				aimRow.add(0.0);				
-			}
+			aimRow.add(0.0);
 		}
-		
-		List<Double> firstRow = getListFromMap(inputFirstRowValues);
-		List<Double> secondRow = getListFromMap(inputSecondRowValues);
-		List<Double> thirdRow = getListFromMap(inputThirdRowValues);
-		List<Double> fourthRow = getListFromMap(inputFourthRowValues);
-		List<Double> fifthRow = getListFromMap(inputFifthRowValues);
 
-		List<Double> additionalValues = getadditionalValues(inputComboBoxes);
+		List<Double> additionalValues = getAdditionalValues(inputComboBoxes);
 
-		firstRow.add(5, additionalValues.get(0));
-		secondRow.add(5, additionalValues.get(1));
-		thirdRow.add(5, additionalValues.get(2));
-		fourthRow.add(5, additionalValues.get(3));
-		fifthRow.add(5, additionalValues.get(4));
+		List<Double> firstRow = getListFromMap(inputFirstRowValues, 3, additionalValues.get(0));
+		List<Double> secondRow = getListFromMap(inputSecondRowValues, 3, additionalValues.get(1));
+		List<Double> thirdRow = getListFromMap(inputThirdRowValues, 3, additionalValues.get(2));
+		List<Double> fourthRow = getListFromMap(inputFourthRowValues, 3, additionalValues.get(3));
+		List<Double> fifthRow = getListFromMap(inputFifthRowValues, 3, additionalValues.get(4));
 
 		double[] aimRowArray = convertToArray(aimRow);
 		double[] firstRowArray = convertToArray(firstRow);
@@ -611,11 +600,10 @@ public class MainWindow extends JFrame {
 		double[] thirdRowArray = convertToArray(thirdRow);
 		double[] fourthRowArray = convertToArray(fourthRow);
 		double[] fifthRowArray = convertToArray(fifthRow);
-		
-		double[][] matrix = new double[][] {
-			aimRowArray, firstRowArray, secondRowArray, thirdRowArray, fourthRowArray, fifthRowArray
-		};
-		
+
+		double[][] matrix = new double[][] { aimRowArray, firstRowArray, secondRowArray, thirdRowArray, fourthRowArray,
+				fifthRowArray };
+
 		for (double[] row : matrix) {
 			for (double element : row) {
 				System.out.print(element + ", ");
@@ -631,25 +619,22 @@ public class MainWindow extends JFrame {
 
 		for (int i = 0; i < row.size(); i++) {
 			rowArray[i] = row.get(i);
-
 		}
 
 		return rowArray;
 	}
 
-	private List<Double> getadditionalValues(Map<JComboBox, Object> inputComboBoxes) {
+	private List<Double> getAdditionalValues(Map<JComboBox, Object> inputComboBoxes) {
 
 		List<Double> doubleValues = new ArrayList<>();
-		for (Entry<JComboBox, Object> entry : inputComboBoxes.entrySet()) { // пройтись по всем значениям Map
+		for (Entry<JComboBox, Object> entry : inputComboBoxes.entrySet()) {
 
 			if (!entry.getValue().equals(null)) {
 				String value = (String) entry.getValue();
 				if (value.equals("<=")) {
 					doubleValues.add(1.0);
-				} else if (value.equals(">=")) {			
+				} else if (value.equals(">=")) {
 					doubleValues.add(-1.0);
-				} else if (value.equals("=")) {
-					doubleValues.add(0.0);
 				} else {
 					doubleValues.add(0.0);
 				}
@@ -658,7 +643,8 @@ public class MainWindow extends JFrame {
 		return doubleValues;
 	}
 
-	private List<Double> getListFromMap(Map<JTextField, String> inputValues) {
+	private List<Double> getListFromMap(Map<JTextField, String> inputValues, Integer additionalElements,
+			Double combobox) {
 		List<Double> doubleValues = new ArrayList<>();
 		for (Entry<JTextField, String> entry : inputValues.entrySet()) {
 
@@ -667,6 +653,14 @@ public class MainWindow extends JFrame {
 			} else {
 				doubleValues.add(0.0);
 			}
+		}
+
+		for (int i = 0; i < additionalElements; i++) {
+			doubleValues.add(5, 0.0);
+		}
+
+		if (additionalElements != 0) {
+			doubleValues.add((doubleValues.size() - 1), combobox);
 		}
 		return doubleValues;
 	}
@@ -726,7 +720,7 @@ public class MainWindow extends JFrame {
 
 		return textFields;
 	}
-	
+
 	protected Map<JTextField, String> readFifthRowValues() {
 		Map<JTextField, String> textFields = new LinkedHashMap<>();
 
@@ -740,7 +734,6 @@ public class MainWindow extends JFrame {
 
 		return textFields;
 	}
-	
 
 	protected Map<JTextField, String> readAimValues() {
 
