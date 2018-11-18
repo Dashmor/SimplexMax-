@@ -103,37 +103,37 @@ public class MainWindow extends JFrame {
 		setTitle("SimplexMax");
 		getContentPane().setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Mattrasses");
+		JLabel lblNewLabel = new JLabel("Матрасы");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(15, 16, 158, 43);
 		getContentPane().add(lblNewLabel);
 
-		JLabel lblFx = new JLabel("Profit F(x) =");
+		JLabel lblFx = new JLabel("Доход F(x) =");
 		lblFx.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblFx.setBounds(15, 78, 158, 43);
 		getContentPane().add(lblFx);
 
-		JLabel lblSptings = new JLabel("Springs");
-		lblSptings.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblSptings.setBounds(15, 151, 158, 43);
-		getContentPane().add(lblSptings);
+		JLabel label_1 = new JLabel("Пружины");
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		label_1.setBounds(15, 151, 158, 43);
+		getContentPane().add(label_1);
 
-		JLabel lblCloths = new JLabel("Fabric");
-		lblCloths.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblCloths.setBounds(15, 224, 158, 43);
-		getContentPane().add(lblCloths);
+		JLabel label_2 = new JLabel("Ткань");
+		label_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		label_2.setBounds(15, 224, 158, 43);
+		getContentPane().add(label_2);
 
-		JLabel lblFiller = new JLabel("Filler");
-		lblFiller.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblFiller.setBounds(15, 302, 158, 43);
-		getContentPane().add(lblFiller);
+		JLabel label_3 = new JLabel("Наполнитель");
+		label_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		label_3.setBounds(15, 302, 158, 43);
+		getContentPane().add(label_3);
 
-		JLabel lblThreads = new JLabel("Threads");
-		lblThreads.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblThreads.setBounds(15, 378, 158, 43);
-		getContentPane().add(lblThreads);
+		JLabel label_4 = new JLabel("Нитки");
+		label_4.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		label_4.setBounds(15, 378, 158, 43);
+		getContentPane().add(label_4);
 
-		JButton btnCalculate = new JButton("Calculate the best solution");
+		JButton btnCalculate = new JButton("Найти оптимальный план");
 		btnCalculate.setForeground(new Color(0, 0, 0));
 		btnCalculate.setBackground(new Color(0, 0, 0));
 		btnCalculate.setFont(new Font("Tahoma", Font.PLAIN, 19));
