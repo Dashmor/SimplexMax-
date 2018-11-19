@@ -35,12 +35,20 @@ public class MathService {
 			counter++;
 		} while (allElementsNotOverZero(converteMatrix[0]) && counter < 5);
 
+		String outString = "Оптимальное кол-во продуктов: \n";
+		
 		for (int i = 0; i < 5; i++) {
-			if( indexes.get(i)!=null ) {
-				System.out.println("x*i = " + i + " and has value " + matrix[indexes.get(i)][matrix[indexes.get(i)].length-1]);
+			if(indexes.get(i) != null) {
+				int rowIndexes = indexes.get(i);
+				outString += i + ". " + converteMatrix[rowIndexes][converteMatrix[rowIndexes].length - 1];
+			} else {
+				outString += i + ". " + "0.0";
 			}
+				
 		}
-		return "";
+		
+		
+		return outString;
 	}
 
 	private boolean allElementsNotOverZero(double[] row) {
